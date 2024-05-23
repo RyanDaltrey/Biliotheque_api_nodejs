@@ -3,7 +3,9 @@ const sequelize = require ('../Config/Sequelize');
 const bcrypt = require('bcrypt');
 
 class Emprunteurs extends Model{
-
+    async validatePassword(password){
+        return await bcrypt.compare(password, this.empr_mdp);
+    }
 }
 
 Emprunteurs.init({

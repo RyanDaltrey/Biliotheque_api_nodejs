@@ -3,10 +3,12 @@ const app = express();
 const auteursRoutes = require ('./Routes/AuteursRoutes');
 const livresRoutes = require ('./Routes/LivresRoutes');
 const empruntsRoutes = require('./Routes/EmpruntsRoutes');
+const emprunteursRoutes = require('./Routes/EmprunteursRoutes');
 
 app.use(express.json());
 app.use('/auteurs', auteursRoutes);
 app.use('/livres',livresRoutes);
 app.use('/emprunts', empruntsRoutes);
+app.use('/emprunteurs', emprunteursRoutes );
 
 module.exports = app;
