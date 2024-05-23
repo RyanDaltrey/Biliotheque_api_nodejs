@@ -30,5 +30,15 @@ class EmpruntsController{
             result.json({ error : "Une erreur est survenue lors de l'ajour de l'emprunt."})
         }
     }
+
+    async updateEmprunts(request, result){
+        try {
+            const emprunts = await EmpruntsService.updateEmprunts(request.params.id , request.body);
+            result.json(emprunts);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la modification de l'emprunt."})
+        }
+    }
 }
 module.exports = new EmpruntsController();

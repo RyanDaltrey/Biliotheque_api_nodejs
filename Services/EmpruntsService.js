@@ -12,6 +12,13 @@ class EmpruntsService{
     async addEmprunts(empruntsdata){
         return await Emprunts.create(empruntsdata)
     }
+
+    async updateEmprunts(empruntsID, emprunts){
+        return await Emprunts.update(emprunts, {
+            where : { emp_id : empruntsID},
+            individualHooks: true
+        })
+    }
 }
 
 
