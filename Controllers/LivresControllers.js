@@ -19,6 +19,15 @@ class LivresController{
             result.json({ error : "Une erreur est survenue lors de la recuperation du compte"})
         }
     }
+    async addLivres(request, result){
+        try { 
+            const livres = await LivresService.AddLivres(request.body);
+            result.json(livres);
+        } catch (error) {
+            result.status(500);
+            result.json({ error : "Une erreur est survenue lors de l'ajout du livre."})
+        }
+    }
 
 }
 module.exports= new  LivresController();
