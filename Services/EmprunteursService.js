@@ -19,6 +19,12 @@ class EmprunteursService {
             individualHooks : true
         })
     }
+
+    async removeEmprunteurs(emprunteursID){
+        return await Emprunteurs.destroy({
+            where : {empr_id : emprunteursID}
+        })
+    }
 }
 
 module.exports = new EmprunteursService();

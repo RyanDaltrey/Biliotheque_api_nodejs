@@ -40,6 +40,16 @@ class EmprunteursController{
                 
             }
         }
+
+        async removeEmprunteurs(request,result){
+            try {
+                await EmprunteursService.removeEmprunteurs(request.params.id);
+                result.json({ message : "Votre emprunteur a bien été supprimé"})
+            } catch (error) {
+                result.status(500);
+                result.json({error : "Une erreur est survenue lors de la supression de l'emprunteur."})
+            }
+        }
     
 }
 
