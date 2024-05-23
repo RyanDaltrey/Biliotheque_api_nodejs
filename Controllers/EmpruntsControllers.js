@@ -40,5 +40,15 @@ class EmpruntsController{
             result.json({error : "Une erreur est survenue lors de la modification de l'emprunt."})
         }
     }
+
+    async removeEmprunts(request, result){
+        try {
+            await EmpruntsService.removeEmprunts(request.params.id);
+            result.json({message : "Votre emprunt a bien été supprimé"});
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la supression de l'emprunt."})
+        }
+    }
 }
 module.exports = new EmpruntsController();

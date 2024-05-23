@@ -19,6 +19,12 @@ class EmpruntsService{
             individualHooks: true
         })
     }
+
+    async removeEmprunts(empruntsID){
+        return await Emprunts.destroy({
+            where : {emp_id : empruntsID}
+        })
+    }
 }
 
 
