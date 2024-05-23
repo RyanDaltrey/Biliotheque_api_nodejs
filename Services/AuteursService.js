@@ -20,5 +20,11 @@ class AuteursService {
             individualHooks : true
         })
     }
+
+    async removeAuteurs(auteursID){
+        return await Auteurs.destroy({
+            where : {au_id : auteursID}
+        })
+    }
 }
 module.exports = new AuteursService();

@@ -42,5 +42,15 @@ async updateAuteurs(request, result){
     }
 }
 
+async removeAuteurs(request, result){
+    try {
+        await AuteursService.removeAuteurs(request.params.id);
+        result.json({message : "L'auteur vient d'etre supprimé"});
+    } catch (error) {
+        result.status(500)
+        result.json({ error : "Une erreur est survenue lors de la suppression de l'auteur"})
+    }
+}
+
 }
 module.exports = new AuteursController();
