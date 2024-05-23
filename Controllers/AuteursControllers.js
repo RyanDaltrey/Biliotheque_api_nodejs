@@ -32,5 +32,15 @@ async addAuteurs(request, result){
     }
 }
 
+async updateAuteurs(request, result){
+    try {
+        const auteur = await AuteursService.updateAuteurs(request.params.id , request.body);
+        result.json(auteur);
+    } catch (error) {
+        result.status(500);
+        result.json({ error : "Une erreur est survenue lors de la modification de l'auteur"})
+    }
+}
+
 }
 module.exports = new AuteursController();
