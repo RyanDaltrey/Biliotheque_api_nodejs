@@ -8,6 +8,10 @@ class EmprunteursService {
     async getEmprunteursByID(emprunteursID){
         return await Emprunteurs.findByPk(emprunteursID)
     }
+
+    async addEmprunteurs(emprunteursdata){
+        return await Emprunteurs.create(emprunteursdata);
+    }
 }
 
 module.exports = new EmprunteursService();
