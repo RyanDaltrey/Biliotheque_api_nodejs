@@ -12,6 +12,13 @@ class EmprunteursService {
     async addEmprunteurs(emprunteursdata){
         return await Emprunteurs.create(emprunteursdata);
     }
+
+    async updateEmprunteurs(emprunteursID, emprunteurs){
+        return await Emprunteurs.update(emprunteurs , {
+            where : {empr_id : emprunteursID},
+            individualHooks : true
+        })
+    }
 }
 
 module.exports = new EmprunteursService();

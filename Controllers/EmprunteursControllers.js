@@ -30,6 +30,17 @@ class EmprunteursController{
             result.json({error : "Une erreur est survenue lors de l'ajout d'emprunteur."})
         }
     }
+    async updateEmprunteurs(request, result){
+        try {
+            const emprunteurs = await EmprunteursService.updateEmprunteurs(request.params.id , request.body);
+            result.json(emprunteurs);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la modification de d'emprunteur"})
+                
+            }
+        }
+    
 }
 
 module.exports = new EmprunteursController();
