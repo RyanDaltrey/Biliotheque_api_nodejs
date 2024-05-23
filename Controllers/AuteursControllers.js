@@ -22,5 +22,15 @@ async getAuteursByID(request,result){
     }
 }
 
+async addAuteurs(request, result){
+    try {
+        const auteurs = await AuteursService.addAuteurs(request.body);
+        result.json(auteurs);
+    } catch (error) {
+        result.status(500);
+        result.json({error : "Une erreur est survenue lors de l'insersection de l'auteur"});
+    }
+}
+
 }
 module.exports = new AuteursController();

@@ -9,5 +9,9 @@ class AuteursService {
     async getAuteursByID(auteursID){
         return await Auteurs.findByPk(auteursID)
     }
+
+    async addAuteurs(auteursdata){
+        return await Auteurs.create(auteursdata);
+    }
 }
 module.exports = new AuteursService();
