@@ -1,5 +1,6 @@
+const jwt = require ("jsonwebtoken")
+const config = require ('../Config/config.json');
 const Emprunteurs = require ('../Models/Emprunteurs');
-const Config = require ('../Config/config.json');
 
 class AuthenticateService{
 
@@ -9,11 +10,23 @@ class AuthenticateService{
     }
 
     async login (email, mdp){
-        const emprunteurs = await Emprunteurs.findOne({where : {empr_email : email}})
+        const emprunteurs = await Emprunteurs.findOne({ where : {empr_email : email}})
         if (!emprunteurs || !await emprunteurs.validatePassword(mdp)){
             throw new Error("Email ou mdp n'est pas correct")
         }
         return this.generateToken(emprunteurs);
+    }
+
+    generateToken(emprunteurs){
+        const payload = {
+            id: emprunteurs.empr_id,
+            email: emprunteurs.empr_email       
+    }
+        return jwt.sign(
+            payload,
+            config.SECRET,
+            {expiresIn: '1h'}
+        )
     }
 }
 
