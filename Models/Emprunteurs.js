@@ -34,21 +34,13 @@ Emprunteurs.init({
     empr_mdp : {
         type : DataTypes.STRING,
         allowNull : false
-    },
-    empr_dateDebut : {
-        type : DataTypes.DATE,
-        allowNull: false
-    },
-    empr_dateFin : {
-        type : DataTypes.DATE,
-        allowNull: false
     }
 
 },{
     sequelize,
     modelName : 'Emprunteurs',
     tableName : 'emprunteurs',
-    timestamps: false,
+    timestamps: false,                      
     hooks : {
         beforeCreate : async (emprunteur) => {
             emprunteur.empr_mdp = await bcrypt.hash(emprunteur.empr_mdp, 10);
