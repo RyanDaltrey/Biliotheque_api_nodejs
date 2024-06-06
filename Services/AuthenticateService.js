@@ -5,8 +5,10 @@ const Emprunteurs = require ('../Models/Emprunteurs');
 class AuthenticateService{
 
     async register(emprunteursData){
-        const emprunteurs = await Emprunteurs.create(emprunteursData);
-        return this.generateToken(emprunteurs);
+        console.log(emprunteursData)
+        const emprunteur = await Emprunteurs.create(emprunteursData);
+        return emprunteur
+        // return this.generateToken(emprunteurs);
     }
 
     async login (email, mdp){
