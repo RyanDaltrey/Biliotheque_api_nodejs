@@ -26,6 +26,10 @@ Auteurs.init({
     au_nationalite :{
         type : DataTypes.STRING,
         allowNull : false
+    },
+    image_url :{
+        type : DataTypes.STRING,
+        allowNull : false
     }
 }, {
     sequelize,
