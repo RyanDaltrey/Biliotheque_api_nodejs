@@ -5,9 +5,10 @@ const jwt = require ('jsonwebtoken');
 class AuthenticateController{
 
     async register(request,result){
+        console.log(request);
         try {
-            const token = await AuthenticateService.register(request.body);
-            result.json({token : token});
+            const emprunteur = await AuthenticateService.register(request.body);
+            result.json({emprunteur : emprunteur, message : "Inscription réussie"});
         } catch (error) {
             result.status(500)
             result.json({error : " Une erreur est survenu lors de l'inscription"});
