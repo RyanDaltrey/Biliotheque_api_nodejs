@@ -35,6 +35,10 @@ Livres.init({
     au_id : {
         type : DataTypes.INTEGER,
         allowNull: false
+    },
+    image_livre : {
+        type : DataTypes.STRING,
+        allowNull : false
     }
 }, {
     sequelize,
